@@ -1,0 +1,4 @@
+applications:
+- name: game-changer
+  random-route: true
+  memory: 256M

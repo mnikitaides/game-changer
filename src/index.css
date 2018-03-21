@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+  background: rgb(48, 48, 48);
+}
+
+.team-selector {
+  margin-left: 20px;
+}
+.team-selector .select-field {
+  width: 384px;
+  display: flex;
+}
+.team-selector .load-button {
+  /*margin-left: 20px;*/
+  margin-bottom: 25px;
+  /*display: inline-block;*/
+}
+.team-selector .exhibition-field {
+  margin-top: 10px;
+  /*display: inline-block;*/
+}
+
+.loading {
+  background-color: blue;
+  position: absolute;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
