@@ -1,24 +1,26 @@
 import React from 'react';
 import './App.css';
 import TeamSelector from './js/components/TeamSelector';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 class App extends React.Component {
 
   render() {
     return (
       <div className="App">
-        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <MuiThemeProvider theme={theme}>
           <TeamSelector/>
         </MuiThemeProvider>
       </div>
     );
-  }
-
-  responseGoogle = (response) => {
-    console.log(response);
   }
 }
 

@@ -1,9 +1,13 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import TextField from 'material-ui/TextField';
-import LinearProgress from 'material-ui/LinearProgress';
+// import Dialog from 'material-ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
+// import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
+// import LinearProgress from 'material-ui/LinearProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 export default class LoadTeamButton extends React.Component {
 
@@ -40,14 +44,16 @@ export default class LoadTeamButton extends React.Component {
 
   render() {
     const actions = [
-      <FlatButton
+      <Button
+        variant="text"
         label="Cancel"
-        primary={true}
+        primary="true"
         onClick={this.handleClose}
       />,
-      <FlatButton
+      <Button
+        variant="text"
         label="Submit"
-        primary={true}
+        primary="true"
         disabled={this.state.url === ''}
         onClick={this.handleSubmit}
       />,
@@ -62,7 +68,7 @@ export default class LoadTeamButton extends React.Component {
 
     return (
       <div className="load-button">
-        <RaisedButton label="Load Team" primary={true} onClick={this.handleOpen}/>
+        <Button variant="contained" primary="true" onClick={this.handleOpen}>Load Team</Button>
         <Dialog
           title={this.state.showLoading ? "Loading..." : "Load Team"}
           actions={actions}
