@@ -28,7 +28,6 @@ export default class GameChangerLoaderUtil {
     let team = {
       url: url,
       name: year + ' ' + name,
-      shortName: teamName ? teamName : name.substring(0, name.indexOf(' ')),
       year: year
     };
     await this.run(team);
@@ -120,12 +119,17 @@ export default class GameChangerLoaderUtil {
     return success;
   }
 
+  setShortName(team, html) {
+    let $ = cheerio.load(html);
+    let teamName = $('.giganticText').text();
+    team.shortName = teamName.substring(0, teamName.indexOf(' '));
+  }
 
   async populateGames(team) {
     try {
       let html = await rp(team.url);
       let $ = cheerio.load(html);
-
+      this.setShortName(team, html);
       if(!team.games) {
         team.games = [];
       }
@@ -165,7 +169,8 @@ export default class GameChangerLoaderUtil {
       let html = await rp(options);
       let $ = cheerio.load(html);
       game.dateTime = $('#headerDate').attr('datetime');
-      let stats = $('h5:contains(' + team.shortName + ')');
+      // icontains does a case insensitive search
+      let stats = $('h5:icontains(' + team.shortName + ')');
       if(stats.length === 0) {
         // console.log(`Could not find team shortName "${team.shortName}" on the page for game: ${game.url}`);
         // todo figure out how to handle this.  in Google Sheets I prompted the user to enter the team name
